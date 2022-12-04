@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+.centered {
+  align-items: center;
+  justify-content: center;
+}
+
+
+.center-h {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.center-w {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.center-w-h {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mt-10 {
+  margin-top: 10vh;
+}
+
+.mt-15 {
+  margin-top: 15vh;
+}
+
+.mt-20 {
+  margin-top: 20vh;
+}
+
+.mt-25 {
+  margin-top: 25vh;
+}
+
+.mt-30 {
+  margin-top: 30vh;
+}

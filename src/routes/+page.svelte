@@ -21,5 +21,5 @@
 {#await getData()}
 	<div class="loading" />
 {:then _data}
-	<h1>Data would go here</h1>
+	<h1>Data would go here <iconify-icon icon="ic:sharp-search" /></h1>
 {/await}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import 'iconify-icon';
 	import type { PageData } from './$types';
 	import Navigation from 'components/navigation/Navigation.svelte';
 	import Toasts from 'components/toasts/Toasts.svelte';
@@ -9,6 +10,6 @@
 <Toasts />
 <Navigation {data} />
 
-<main data-sveltekit-prefetch>
+<main>
 	<slot />
 </main>

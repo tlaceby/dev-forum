@@ -3,7 +3,7 @@ import Posts from "db/posts/posts";
 import { ObjectId } from "mongodb";
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = async ({ locals, params }) => {
+export const load: PageServerLoad = async ({ params }) => {
   const _id = new ObjectId(params.postID);
   const post = await Posts.findOne({ _id });
 
@@ -11,7 +11,6 @@ export const load: PageServerLoad = async ({ locals, params }) => {
     throw redirect(301, "/posts/");
   }
 
-  console.log(post);
   const postID = post._id.toString();
   // @ts-ignore
   post._id = postID;

@@ -15,7 +15,9 @@
 </script>
 
 <div class="container col-11 mt-10">
-	<h1 class="float-left">{title} - <span class="author-username">{author_username}</span></h1>
+	<h1 class="float-left">
+		{title} - <a href={`/user/${author_username}`} class="author-username">{author_username}</a>
+	</h1>
 	<span class="flex float-right">
 		{#if !usersOwnPost && userLoggedIn}
 			<button class="btn btn-sm">⭐ Like</button>

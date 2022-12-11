@@ -6,6 +6,7 @@
 	$: user = data.userData;
 	$: currentUser = data?.currentUser;
 	$: usersMatch = currentUser?.username === user.username;
+	$: recentPosts = data.recentPosts;
 
 	let showAccountSettings = false;
 </script>
@@ -15,7 +16,7 @@
 		<span class="text-dark">{user.username}</span>
 		{#if usersMatch}
 			<button class="btn btn-sm btn-secondary ml-2" on:click={() => (showAccountSettings = true)}
-				>settings</button
+				>Settings <iconify-icon inline icon="ic:baseline-settings" /></button
 			>
 		{/if}
 	</h1>
@@ -32,8 +33,48 @@
 	/>
 {/if}
 
+<div id="posts-section" class="col-11 container">
+	<h2>Recent posts</h2>
+
+	<div class="posts-cards flex">
+		{#each recentPosts as { title, stars, created, partial_question, id }}
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title h5">{title}</div>
+					<div class="card-subtitle text-gray">
+						{[partial_question]}
+					</div>
+				</div>
+				<div class="card-body">
+					<p><iconify-icon icon="ic:baseline-star" /> {stars}</p>
+					<p><iconify-icon icon="ic:outline-date-range" /> {created}</p>
+				</div>
+				<div class="card-footer">
+					<a href={`/posts/${id}`} class="btn btn-sm btn-primary">View</a>
+				</div>
+			</div>
+		{/each}
+	</div>
+</div>
+
 <style>
 	p {
 		margin: 0;
+	}
+
+	#posts-section {
+		margin-top: 50px;
+		padding-bottom: 100px;
+	}
+
+	.posts-cards {
+		display: grid;
+		grid-template-columns: 8fr 8fr;
+		grid-gap: 1em;
+		flex-wrap: wrap;
+	}
+
+	.card {
+		border-radius: 6px;
 	}
 </style>

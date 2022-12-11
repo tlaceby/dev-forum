@@ -36,11 +36,11 @@
 	</div>
 
 	<div class="form-group">
-		<label class="form-label" for="question-body">Tags</label>
+		<label class="form-label" for="question-body">Tags </label>
 		<input type="text" class="form-input col-8 float-left" name="tag-list" bind:value={tagText} />
 		<button class="btn btn float-right" on:click|preventDefault={addTag} disabled={!canSubmitTag}
-			>Add Tag</button
-		>
+			><iconify-icon inline icon="ic:baseline-tag" /> Add Tag
+		</button>
 		<br /><br />
 		{#each tags as tag, index}
 			<span class="chip clearfix">

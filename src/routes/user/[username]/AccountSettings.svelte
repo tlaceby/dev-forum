@@ -18,7 +18,7 @@
 		formData.append('about-me', newAbout);
 		const res = await fetch('/user/settings/about', {
 			method: 'post',
-			body: formData
+			body: formData,
 		});
 
 		if (res.ok) {
@@ -58,13 +58,15 @@
 						rows="4"
 					/>
 					<button class="btn btn-sm mt-2" disabled={!aboutChanged} on:click|once={updateAbout}
-						>Save</button
+						>Save <iconify-icon inline icon="ic:outline-save-as" /></button
 					>
 				</div>
 
 				<br />
 				<div class="form-group">
-					<button class="btn btn-sm mt-2" on:click|once={logout}>Logout</button>
+					<button class="btn btn-sm mt-2" on:click|once={logout}
+						>Logout <iconify-icon inline icon="ic:baseline-logout" /></button
+					>
 				</div>
 			</div>
 		</div>

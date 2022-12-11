@@ -1,4 +1,5 @@
 import { error } from "@sveltejs/kit";
+import Posts from "db/posts/posts";
 import type { UserDetailsSchema } from "db/users/schema";
 import Users from "db/users/users";
 import UserDetails from "db/users/user_details";
@@ -9,7 +10,6 @@ export const prerender = "auto";
 
 export const load: PageServerLoad = async ({ params }) => {
   const username = params.username;
-  console.log("user route hit %s", username);
   const userID = (await Users.findOne({ username }))?._id.toString();
   if (!userID) {
     throw error(400, `/user/${username}/ `);
@@ -27,5 +27,26 @@ export const load: PageServerLoad = async ({ params }) => {
     account_created,
     userID,
   };
-  return { userData };
+
+  // Get the users most recent posts
+  const recentPosts =
+    (await Posts.find({ author_username: username }).toArray()).map(
+      (post) => {
+        const MAX_CHARS = 220;
+        const { author_username, title, _id, stars, created, question } = post;
+        return {
+          author_username,
+          title,
+          partial_question: question.substring( // show only the starting characters only
+            0,
+            (question.length < MAX_CHARS) ? -1 : MAX_CHARS,
+          ),
+          stars,
+          id: _id.toString(),
+          created: created.toDateString(),
+        };
+      },
+    );
+
+  return { userData, recentPosts };
 };

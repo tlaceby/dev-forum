@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { marked } from 'marked';
 	import { toast_primary } from 'components/toasts/toasts';
 	import type { PageData } from './$types';
 
@@ -12,6 +13,9 @@
 	const { title, question, stars, created, tags, author_username } = data.post;
 	$: usersOwnPost = data?.currentUser?.username == author_username;
 	$: userLoggedIn = data?.currentUser;
+
+	// Parse the markdown stored in the db to valid HTML.
+	$: questionMarkdown = marked(question);
 </script>
 
 <div class="container col-11 mt-10">
@@ -35,7 +39,12 @@
 	</div>
 	<br />
 	<div class="question">
-		{question}
+		{#await questionMarkdown}
+			<br />
+			<div class="loading" />
+		{:then html}
+			{@html html}
+		{/await}
 	</div>
 </div>
 
@@ -55,6 +64,9 @@
 	}
 
 	.question {
-		margin-top: 30px;
+		border: 1px dashed #c8c8c8;
+		padding: 2em;
+		overflow: hidden;
+		border-radius: 4px;
 	}
 </style>

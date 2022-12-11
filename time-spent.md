@@ -20,3 +20,16 @@ Make sure that users cannot edit other peoples about section and made modals wor
 Added the creation of posts and made a share / like button. Users who are not logged cannot see the like button and users who are viewing there own post cannot see it either. Showing the post creation date as well as the tags list. The tags are simply a array of strings that hopefully can be searched.
 
 Created the video demonstration for week2.
+
+
+## Saturday 12/10 11:10 am 4hr
+
+Added posts view to specific users page. Added Markdown view to the posts view. Added some performance improvements and polish for slow internet connections.
+
+Spinner added for loading for posts as well as user page. Toast notifications added for 500+ errors on explore page.
+
+## Sunday 12/11 10:33AM - 12:43
+
+Added posts views. Sorted by stars descending. Limited the view to only 100 posts as well. Added display for markdown view. Now users can write posts in markdown format and then it will be diasplayed as HTML in the view. However the database still only shows the raw text.
+
+Updated timesheet for previous days.

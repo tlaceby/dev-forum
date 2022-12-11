@@ -1,5 +1,6 @@
 <script lang="ts">
-	import 'iconify-icon';
+	import * as iconify_icon from 'iconify-icon';
+	iconify_icon.enableCache('all');
 	import type { PageData } from './$types';
 	import Navigation from 'components/navigation/Navigation.svelte';
 	import Toasts from 'components/toasts/Toasts.svelte';

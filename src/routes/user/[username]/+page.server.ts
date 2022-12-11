@@ -19,7 +19,11 @@ export const load: PageServerLoad = async ({ params }) => {
     userID,
   }) as WithId<UserDetailsSchema>;
 
-  const { stars, about, account_created } = details;
+  const usersPosts = await Posts.find({ author_username: username }).toArray();
+  let stars = 0;
+  for (const posts of usersPosts) stars += posts.user_stars.length;
+
+  const { about, account_created } = details;
   const userData = {
     username,
     stars,
@@ -33,7 +37,8 @@ export const load: PageServerLoad = async ({ params }) => {
     (await Posts.find({ author_username: username }).toArray()).map(
       (post) => {
         const MAX_CHARS = 220;
-        const { author_username, title, _id, stars, created, question } = post;
+        const { author_username, title, _id, user_stars, created, question } =
+          post;
         return {
           author_username,
           title,
@@ -41,7 +46,7 @@ export const load: PageServerLoad = async ({ params }) => {
             0,
             (question.length < MAX_CHARS) ? -1 : MAX_CHARS,
           ),
-          stars,
+          user_stars: user_stars,
           id: _id.toString(),
           created: created.toDateString(),
         };

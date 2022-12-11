@@ -3,7 +3,6 @@ import type { ObjectId } from "mongodb";
 export interface UserDetailsSchema {
   userID: string;
   about: string;
-  stars: number;
   account_created: Date;
 }
 

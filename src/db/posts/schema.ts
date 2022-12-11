@@ -5,8 +5,8 @@ export interface PostSchema {
   question: string;
   tags: string[];
   created: Date;
-  stars: number;
   active: boolean;
+  user_stars: string[]; // contains the array of user_names who starred any particular post
 }
 
 export const POSTS_COLLECTION_NAME = "posts";

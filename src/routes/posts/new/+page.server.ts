@@ -51,7 +51,7 @@ export const actions: Actions = {
       tags,
       created: date,
       active: true,
-      stars: 0,
+      user_stars: [],
       author_username: username,
     });
 

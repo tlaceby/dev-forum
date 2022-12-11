@@ -37,20 +37,20 @@
 	<h2>Recent posts</h2>
 
 	<div class="posts-cards flex">
-		{#each recentPosts as { title, stars, created, partial_question, id }}
+		{#each recentPosts as post}
 			<div class="card">
 				<div class="card-header">
-					<div class="card-title h5">{title}</div>
+					<div class="card-title h5">{post.title}</div>
 					<div class="card-subtitle text-gray">
-						{[partial_question]}
+						{post.partial_question}
 					</div>
 				</div>
 				<div class="card-body">
-					<p><iconify-icon icon="ic:baseline-star" /> {stars}</p>
-					<p><iconify-icon icon="ic:outline-date-range" /> {created}</p>
+					<p><iconify-icon icon="ic:baseline-star" /> {post.user_stars.length}</p>
+					<p><iconify-icon icon="ic:outline-date-range" /> {post.created}</p>
 				</div>
 				<div class="card-footer">
-					<a href={`/posts/${id}`} class="btn btn-sm btn-primary">View</a>
+					<a href={`/posts/${post.id}`} class="btn btn-sm btn-primary">View</a>
 				</div>
 			</div>
 		{/each}

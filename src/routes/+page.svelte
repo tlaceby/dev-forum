@@ -12,7 +12,6 @@
 		}
 
 		const data = (await datas.json()) as WithId<PostSchema>[];
-		console.log(data[0]);
 		return data;
 	}
 </script>
@@ -49,7 +48,7 @@
 					</span>
 				</div>
 				<div class="rhs">
-					<span class="card-subtitle text-gray">⭐ {post.stars} </span>
+					<span class="card-subtitle text-gray">⭐ {post.user_stars.length} </span>
 					<a href={`/posts/${post._id}`}
 						><iconify-icon inline icon="ic:baseline-arrow-circle-right" /></a
 					>

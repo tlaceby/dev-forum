@@ -28,8 +28,17 @@ Added posts view to specific users page. Added Markdown view to the posts view. 
 
 Spinner added for loading for posts as well as user page. Toast notifications added for 500+ errors on explore page.
 
-## Sunday 12/11 10:33AM - 12:43
+## Sunday 12/11 10:33AM - 1:05
 
 Added posts views. Sorted by stars descending. Limited the view to only 100 posts as well. Added display for markdown view. Now users can write posts in markdown format and then it will be diasplayed as HTML in the view. However the database still only shows the raw text.
 
 Updated timesheet for previous days.
+
+
+## Sunday 12/11 2:30P -> 4:50pm
+
+Finally added like and dislike functionality to application. The like and dislike methods will propoerly do authentication and validation to only cound a single vote.
+
+Furthermore cleaned up one of the `users` table to make it not store the actual stars anymore. Instead now will be generated and computed whenever the profile is visited.
+
+Made video for second to last week presentation.

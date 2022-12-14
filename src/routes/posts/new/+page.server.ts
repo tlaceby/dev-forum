@@ -1,5 +1,5 @@
-import { type Actions, invalid, redirect } from "@sveltejs/kit";
-import Posts from "db/posts/posts";
+import { type Actions, fail, redirect } from "@sveltejs/kit";
+import Posts, { Comments } from "db/posts/posts";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ request, locals }) => {
@@ -21,13 +21,13 @@ export const actions: Actions = {
     const question = formData.get("question") as string;
 
     if (!title) {
-      return invalid(400, {
+      return fail(400, {
         errorMessage: "Post is missing a valid title",
       });
     }
 
     if (!question) {
-      return invalid(400, {
+      return fail(400, {
         errorMessage: "Post is missing a valid question body.",
       });
     }
@@ -56,6 +56,14 @@ export const actions: Actions = {
     });
 
     const postID = insertedId.toString();
+
+    // create a comment that relates to that postID
+    await Comments.insertOne({
+      postID,
+      post_author: username,
+      comments: [],
+    });
+
     throw redirect(301, `/posts/${postID}/`);
   },
 };

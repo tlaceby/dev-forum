@@ -1,4 +1,4 @@
-import { type Actions, invalid, redirect } from "@sveltejs/kit";
+import { type Actions, fail, redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import * as bcrypt from "bcrypt";
 import Users from "db/users/users";
@@ -21,20 +21,20 @@ export const actions: Actions = {
     if (
       typeof password !== "string" || typeof username !== "string"
     ) {
-      return invalid(400, { invalidRequestData: true });
+      return fail(400, { invalidRequestData: true });
     }
 
     username = username.toLowerCase();
     const user = await Users.findOne({ username });
     // Check that matching user exist
     if (!user) {
-      return invalid(400, { usernameDoesNotExist: true });
+      return fail(400, { usernameDoesNotExist: true });
     }
 
     // compare hashes
     const passwordsMatch = bcrypt.compareSync(password, user.password);
     if (!passwordsMatch) {
-      return invalid(400, { invalidPassword: true });
+      return fail(400, { invalidPassword: true });
     }
 
     const userID = user._id.toString();

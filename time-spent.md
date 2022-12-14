@@ -42,3 +42,14 @@ Finally added like and dislike functionality to application. The like and dislik
 Furthermore cleaned up one of the `users` table to make it not store the actual stars anymore. Instead now will be generated and computed whenever the profile is visited.
 
 Made video for second to last week presentation.
+
+
+
+## Monday 12/12 3PM -> 3:30
+
+Planned how comments should be structured and implimented in a non-relational database like mongodb. I decided to go with them directly nested inside the Post schema.
+
+## Wed 12/14 10:45 AM - 2:05PM
+
+Started implimenting comments into the Posts schema.
+Added comments as well as styling changes to the code blocks. Added functionality to delete comments and create them with a nice modal form.

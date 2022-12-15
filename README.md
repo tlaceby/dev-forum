@@ -1,6 +1,6 @@
 # Developer Forum Application
 
-<!-- [![.github/workflows/ci.yaml](https://github.com/pages-themes/minimal/actions/workflows/ci.yaml/badge.svg)](https://github.com/pages-themes/minimal/actions/workflows/ci.yaml) [![Gem Version](https://badge.fury.io/rb/jekyll-theme-minimal.svg)](https://badge.fury.io/rb/jekyll-theme-minimal) -->
+https://dev-forum-tau.vercel.app/posts/639b917ec315d079546a0b2a
 
 Dev-forum is a platform for developers to discuss and share code with another in
 open forums. Users can explore and contribute to forums easily and discuss their

@@ -1,6 +1,6 @@
-# Developer Forum Application
+# Developer Forum Application - [Website](https://devforum.app/posts/639b917ec315d079546a0b2a)
 
-https://dev-forum-tau.vercel.app/posts/639b917ec315d079546a0b2a
+Website: https://devforum.app/posts/639b917ec315d079546a0b2a
 
 Dev-forum is a platform for developers to discuss and share code with another in
 open forums. Users can explore and contribute to forums easily and discuss their

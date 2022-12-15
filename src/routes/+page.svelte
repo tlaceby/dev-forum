@@ -14,6 +14,10 @@
 		const data = (await datas.json()) as WithId<PostSchema>[];
 		return data;
 	}
+
+	function NOT_READY_YET() {
+		toast_error('This functionality is not ready yet');
+	}
 </script>
 
 <div class="empty mt-2">
@@ -26,7 +30,7 @@
 	<!-- Form to explore posts -->
 	<div class="empty-subtitle input-group col-6">
 		<input type="text" class="form-input" placeholder="Have a question or issue?" />
-		<button class="btn btn-primary input-group-btn">Search</button>
+		<button class="btn btn-primary input-group-btn" on:click={NOT_READY_YET}>Search</button>
 	</div>
 </div>
 

@@ -28,7 +28,13 @@ installed on your machine as well as
    cd dev-forum
    ```
 
-2. Either using [npm](https://nodejs.org/en/) or [pnpm](https://pnpm.io/) run
+2. To setup the database in local development you will need to create a `.env` file in the root of the project and place the host uri to a mongodb instance. Or you could simply use mongodb atlas for free online.
+
+```.env
+MONGODB_URI=mongodb://127.0.0.1:27017
+```
+
+3. Either using [npm](https://nodejs.org/en/) or [pnpm](https://pnpm.io/) run
    the install command. Once all dependecies are collected and installed you can
    run the application on localhost using the dev command:
 

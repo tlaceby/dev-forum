@@ -31,7 +31,9 @@
 </div>
 
 {#await getData()}
-	<div class="loading" />
+	<br />
+
+	<div class="loading loading-lg mt-10" />
 {:then posts}
 	<div class="posts-section container col-11">
 		{#each posts as post}

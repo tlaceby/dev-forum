@@ -66,7 +66,7 @@
 	<div class="question">
 		{#await questionMarkdown}
 			<br />
-			<div class="loading" />
+			<div class="loading loading-lg" />
 		{:then html}
 			{@html html}
 		{/await}

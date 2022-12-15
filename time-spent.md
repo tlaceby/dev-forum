@@ -92,3 +92,8 @@ warning and danger buttons for the delete and update.
 ## Wed 12/15 12:20 -> 12:58PM
 
 Created a readme.md file as well as updated the license.md file.
+
+
+## Wed 12/15 1:15PM 
+
+Adding a live deployment to the web. Instead of using a local database I am setting up a database instance on the cloud and deploying to vercel.

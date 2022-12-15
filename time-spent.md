@@ -1,24 +1,26 @@
 ## Day Name - Time Started - Time Ended
+
 Brief description i guess of what is planned / happened.
 
+## Wednesday 8:05 PM - 12:50 PM
 
-## Wednesday  8:05 PM - 12:50  PM
 Started work on project. Created basic pages without logic and adding basic css styling
 
+## Saturday 12/04 9:40ish AM - 11AM
 
-## Saturday 12/04  9:40ish AM - 11AM
 Added basic user authentication and roles. Customized navigation bar and made it diferent for users who are logged in and users who are not.
 
-## Saturday 12/04  7pm
+## Saturday 12/04 7pm
+
 I added some checks to make sure if you are not logged in you cannot go to the posts/new page. Added more checks and conditional to the templates for what buttons to show users if they are loggin in or not.
 
 Make sure that users cannot edit other peoples about section and made modals work without page reload :).
 
-## Sunday 10:30 AM - 12:40PM 
+## Sunday 10:30 AM - 12:40PM
+
 Added the creation of posts and made a share / like button. Users who are not logged cannot see the like button and users who are viewing there own post cannot see it either. Showing the post creation date as well as the tags list. The tags are simply a array of strings that hopefully can be searched.
 
 Created the video demonstration for week2.
-
 
 ## Saturday 12/10 11:10 am 4hr
 
@@ -32,7 +34,6 @@ Added posts views. Sorted by stars descending. Limited the view to only 100 post
 
 Updated timesheet for previous days.
 
-
 ## Sunday 12/11 2:30P -> 4:50pm
 
 Finally added like and dislike functionality to application. The like and dislike methods will propoerly do authentication and validation to only cound a single vote.
@@ -40,8 +41,6 @@ Finally added like and dislike functionality to application. The like and dislik
 Furthermore cleaned up one of the `users` table to make it not store the actual stars anymore. Instead now will be generated and computed whenever the profile is visited.
 
 Made video for second to last week presentation.
-
-
 
 ## Monday 12/12 3PM -> 3:30
 
@@ -61,3 +60,7 @@ Finally added the ability to edit and delete posts. Added some good authenticati
 This is something that svelte really shines with. In Django I would need to do alot more work to update the database without reloading the page.
 
 Added a few more classes to the Global css for styling common buttons like warning and danger buttons for the delete and update.
+
+## Wed 12/15 12:20 -> 12:58PM
+
+Created a readme.md file as well as updated the license.md file.

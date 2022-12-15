@@ -3,7 +3,7 @@ import Users from "db/users/users";
 import { ObjectId } from "mongodb";
 import type { RequestHandler } from "../$types";
 
-export const PATCH: RequestHandler = async ({ request, cookies, params }) => {
+export const PATCH: RequestHandler = async ({ cookies, params }) => {
   const sessionID = cookies.get("session");
 
   if (!sessionID) {

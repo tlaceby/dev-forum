@@ -1,17 +1,15 @@
-# Time Spent CS2418
-
-### Day Name - Time Started - Time Ended
+## Day Name - Time Started - Time Ended
 Brief description i guess of what is planned / happened.
 
 
-### Wednesday  8:05 PM - 12:50  PM
+## Wednesday  8:05 PM - 12:50  PM
 Started work on project. Created basic pages without logic and adding basic css styling
 
 
-### Saturday 12/04  9:40ish AM - 11AM
+## Saturday 12/04  9:40ish AM - 11AM
 Added basic user authentication and roles. Customized navigation bar and made it diferent for users who are logged in and users who are not.
 
-### Saturday 12/04  7pm
+## Saturday 12/04  7pm
 I added some checks to make sure if you are not logged in you cannot go to the posts/new page. Added more checks and conditional to the templates for what buttons to show users if they are loggin in or not.
 
 Make sure that users cannot edit other peoples about section and made modals work without page reload :).
@@ -53,3 +51,13 @@ Planned how comments should be structured and implimented in a non-relational da
 
 Started implimenting comments into the Posts schema.
 Added comments as well as styling changes to the code blocks. Added functionality to delete comments and create them with a nice modal form.
+
+## Wed 12/14 3:30PM - 5:33P
+
+Implimented some changes to clean up the posts[ID] page. Seperated the logic for the 3 modals into seperate files as well as added dispatch events to pass data up the tree easier then simply reloading the page every time to force a database reset.
+
+Finally added the ability to edit and delete posts. Added some good authentication checks to make sure users can only modify there content. Added some nice UI effects for post updating as well as made it so the page does not need to reload on each mutation of the database.
+
+This is something that svelte really shines with. In Django I would need to do alot more work to update the database without reloading the page.
+
+Added a few more classes to the Global css for styling common buttons like warning and danger buttons for the delete and update.

@@ -77,3 +77,15 @@ code {
   background-color: #f6f6f6;
   color: #345cd2;
 }
+
+.btn-danger {
+  background-color: transparent;
+  color: #ff5f56;
+  border-color: #ff5f56;
+}
+
+.btn-warning {
+  background-color: transparent;
+  color: #ffad56;
+  border-color: #ffad56;
+}

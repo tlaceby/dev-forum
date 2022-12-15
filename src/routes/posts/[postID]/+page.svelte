@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { marked } from 'marked';
-	import { toast_error, toast_primary } from 'components/toasts/toasts';
+	import { toast, toast_error, toast_primary } from 'components/toasts/toasts';
 	import type { PageData } from './$types';
 	import PostComment from './PostComment.svelte';
+	import EditPostModal from './EditPostModal.svelte';
+	import NewCommentModal from './NewCommentModal.svelte';
 	import { enhance } from '$app/forms';
 
 	function sharePost() {
@@ -14,15 +16,13 @@
 	export let data: PageData;
 	const comments = data.postComment;
 	let showNewCommentModal = false;
+	let showeditPostModal = false;
 
-	const { title, question, user_stars, created, tags, author_username } = data.post;
+	let { title, question, user_stars, created, tags, author_username } = data.post;
 
-	console.log(data);
 	$: usersOwnPost = data?.currentUser?.username === author_username;
 	$: userLoggedIn = data?.currentUser;
-
 	$: alreadyLikedPost = usersOwnPost || user_stars.includes(data?.currentUser?.username);
-	// Parse the markdown stored in the db to valid HTML.
 	$: questionMarkdown = marked(question);
 
 	async function likePost() {
@@ -75,73 +75,64 @@
 
 <section id="comments" class="col-11 container">
 	<br />
-	{#if userLoggedIn}
-		<button class="btn btn-sm" on:click={() => (showNewCommentModal = true)}>Join Discussion</button
-		>
+	<div class="split-section">
+		{#if userLoggedIn}
+			<button class="btn btn" on:click={() => (showNewCommentModal = true)}
+				><iconify-icon inline icon="material-symbols:add-comment-outline" /></button
+			>
+			<!-- Create a modal that handles comments-->
+			<NewCommentModal
+				bind:showNewCommentModal
+				on:comment={({ detail }) => (comments.comments = [...comments.comments, detail])}
+			/>
 
-		{#if showNewCommentModal}
-			<div class="modal active" id="modal-id">
-				<!-- svelte-ignore a11y-missing-content -->
-				<button
-					class="modal-overlay"
-					aria-label="Close"
-					on:click={() => (showNewCommentModal = false)}
+			<!-- show update post button -->
+			{#if usersOwnPost}
+				<button class="btn btn-warning ml-1 mr-1" on:click={() => (showeditPostModal = true)}
+					><iconify-icon inline icon="material-symbols:edit-outline-rounded" /></button
+				>
+
+				<!--A modal that handles editing posts for the specific user-->
+				<EditPostModal
+					bind:showeditPostModal
+					bind:title
+					bind:question
+					on:update={({ detail }) => {
+						title = detail.updatedTitle;
+						question = detail.updatedQuestion;
+
+						// Handle re-rendering the markdown
+						questionMarkdown = marked(question);
+					}}
 				/>
-				<div class="modal-container">
-					<div class="modal-header">
-						<!-- svelte-ignore a11y-missing-content -->
-						<button
-							class="btn btn-clear float-right"
-							aria-label="Close"
-							on:click={() => (showNewCommentModal = false)}
-						/>
-						<div class="modal-title h5">Post a Comment</div>
-					</div>
-					<div class="modal-body">
-						<div class="content">
-							<form
-								method="POST"
-								action="?/comment"
-								use:enhance={({ form }) => {
-									return async ({ result }) => {
-										if (result.type == 'error') {
-											alert('Something went wrong');
-										} else {
-											// @ts-ignore
-											const newComment = result.data.created;
-											comments.comments = [...comments.comments, newComment];
-											// Force an update of the comments array
-										}
 
-										showNewCommentModal = false;
-										form.reset();
-									};
-								}}
-							>
-								<div class="form-group">
-									<textarea
-										required
-										class="form-input"
-										spellcheck="false"
-										name="body"
-										autocomplete="off"
-										placeholder="Leave a response here"
-										rows="4"
-									/>
-								</div>
-								<br />
-								<div class="form-group">
-									<button class="btn">Respond</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
+				<!-- delete form for owner -->
+
+				<form
+					class="inline"
+					action="?/deletePost"
+					method="post"
+					use:enhance={async ({ cancel }) => {
+						const sure = confirm('Are you sure you want to delete this post?');
+						if (!sure) {
+							return cancel();
+						}
+
+						// validate user permissions
+						if (!usersOwnPost || !userLoggedIn) {
+							toast_error('You do not have permission to modify this post');
+							return cancel();
+						}
+					}}
+				>
+					<button class="btn btn-danger" type="submit"
+						><iconify-icon inline icon="material-symbols:delete-outline-rounded" /></button
+					>
+				</form>
+			{/if}
 		{/if}
-	{/if}
-
-	<br />
+	</div>
+	<br /><br />
 	{#each comments.comments as comment}
 		<PostComment {...comment} currentUser={data?.currentUser?.username} />
 	{/each}
@@ -170,5 +161,10 @@
 		padding: 2em;
 		overflow: hidden;
 		border-radius: 4px;
+	}
+
+	.split-section {
+		display: flex;
+		align-items: center;
 	}
 </style>

@@ -14,7 +14,7 @@
 
 <style>
 	#toasts-content {
-		position: absolute;
+		position: fixed;
 		bottom: 1.8em;
 		right: 1em;
 		z-index: 100;

@@ -160,8 +160,6 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    incurred by, or claims asserted against, such Contributor by reason of your
    accepting any such warranty or additional liability.
 
-END OF TERMS AND CONDITIONS
-
 Copyright 2022 Tyler Laceby
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
